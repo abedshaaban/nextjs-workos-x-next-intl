@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Auth
+
+Set the following environment variables in your `.env.local` file:
+
+```env
+WORKOS_API_KEY=''
+WORKOS_CLIENT_ID=''
+WORKOS_COOKIE_PASSWORD=''
+# configured in the WorkOS dashboard
+NEXT_PUBLIC_WORKOS_REDIRECT_URI="http://localhost:3000/api/auth/callback"
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
