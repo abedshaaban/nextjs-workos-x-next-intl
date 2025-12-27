@@ -1,13 +1,12 @@
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { authkit } from "@workos-inc/authkit-nextjs";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-export default async function middleware(request: NextRequest) {
-  const handleI18nRouting = createMiddleware(routing);
-
+export default async function proxy(request: NextRequest) {
   const { headers: authkitHeaders } = await authkit(request);
 
+  const handleI18nRouting = createMiddleware(routing);
   const response = handleI18nRouting(request);
 
   for (const [key, value] of authkitHeaders) {
@@ -22,8 +21,5 @@ export default async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
+  matcher: ["/((?!api|_next|_vercel|trpc|.*\\..*).*)"],
 };
