@@ -1,7 +1,25 @@
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
+import { authkit } from "@workos-inc/authkit-nextjs";
+import { NextRequest, NextResponse } from "next/server";
 
-export default createMiddleware(routing);
+export default async function middleware(request: NextRequest) {
+  const handleI18nRouting = createMiddleware(routing);
+
+  const { headers: authkitHeaders } = await authkit(request);
+
+  const response = handleI18nRouting(request);
+
+  for (const [key, value] of authkitHeaders) {
+    if (key.toLowerCase() === "set-cookie") {
+      response.headers.append(key, value);
+    } else {
+      response.headers.set(key, value);
+    }
+  }
+
+  return response;
+}
 
 export const config = {
   // Match all pathnames except for
