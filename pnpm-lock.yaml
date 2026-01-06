@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@nimpl/proxy-chain':
+        specifier: ^1.0.0
+        version: 1.0.0(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@workos-inc/authkit-nextjs':
         specifier: ^2.12.2
         version: 2.12.2(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -412,6 +415,12 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
+
+  '@nimpl/proxy-chain@1.0.0':
+    resolution: {integrity: sha512-7taEKQt+Obv1aCLzs0nsgTBEWcuKcVzu7EYA47kqZC+S6MvfV60QxxdrR2ObHPezgZ6exOUZ8Vz5qLkHfQVleg==}
+    peerDependencies:
+      next: '>= 14.0.0'
+      react: '>= 18.2.0'
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2642,6 +2651,11 @@ snapshots:
 
   '@next/swc-win32-x64-msvc@16.1.1':
     optional: true
+
+  '@nimpl/proxy-chain@1.0.0(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      next: 16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react: 19.2.3
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
